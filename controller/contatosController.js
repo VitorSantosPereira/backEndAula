@@ -68,4 +68,9 @@ export function criarTarefa(req, res) {
         res.status(201).json(novaTarefa);
     }
 }
+export async function listarBD(req, res) {
 
+    const todaListaBD = await module.listarContatosBD()
+    res.status(200).json(todaListaBD)
+
+}

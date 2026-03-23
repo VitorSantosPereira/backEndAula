@@ -3,7 +3,7 @@ import * as controller from '../controller/contatosController.js';
 
 const routerContatos = Router()
 
-routerContatos.get('/', controller.listar)
+routerContatos.get('/', controller.listarBD)
 
 routerContatos.get('/:id', controller.buscarPorId)
 

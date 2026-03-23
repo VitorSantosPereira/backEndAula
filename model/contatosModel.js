@@ -1,3 +1,5 @@
+import  pool  from "../database/db.js";
+
 let contatos = [
   { id: 1, nome: "João", telefone: "48999999999", email: "joao@email.com" },
   { id: 2, nome: "Maria", telefone: "48988888888", email: "maria@email.com" },
@@ -22,6 +24,8 @@ let tarefas = [
   { id: 9, titulo: "Revisar código", concluida: true },
   { id: 10, titulo: "Deploy do projeto", concluida: false }
 ];
+
+
 export function listarContatos() {
   return contatos;
 }
@@ -80,4 +84,16 @@ export function cadastrarTarefa(titulo, concluida) {
   }
   tarefas.push(novaTarefa)
   return novaTarefa
+}
+
+export async function listarContatosBD() {
+
+  try {
+     const result = await pool.query('SELECT * FROM contatos');
+     return result
+     
+  } catch (Gabriel) {
+    console.log("Erro ao consultar banco de dados:", Gabriel)
+    return Gabriel
+  }
 }
